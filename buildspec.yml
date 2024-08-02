@@ -11,6 +11,8 @@ phases:
       - echo Building the Docker image...
       - docker build -t my-web-app .
       - docker tag my-web-app:latest 859951689048.dkr.ecr.us-east-1.amazonaws.com/eb_webapp:latest
+      - echo Creating imagedefinitions.json...
+      - printf '[{"name":"my-web-app","imageUri":"%s"}]' $859951689048D.dkr.ecr.$us-east-1.amazonaws.com/my-web-app:latest > imagedefinitions.json
   post_build:
     commands:
       - echo Pushing the Docker image...
@@ -19,4 +21,4 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
+    - imagedefinitions.json
