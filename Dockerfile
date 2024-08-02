@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM public.ecr.aws/nginx/nginx:latest
 
 # Copy Nginx configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
